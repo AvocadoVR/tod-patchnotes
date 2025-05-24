@@ -2,93 +2,99 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Update Notes - v1.1.1 Beta</title>
+  <title>Changelog - v1.1 / v1.1.1 Beta</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 40px;
-      background-color: #f9f9f9;
+      background-color: #f4f4f4;
       color: #333;
       line-height: 1.6;
     }
     h1 {
       text-align: center;
-      color: #4CAF50;
+      color: #2c3e50;
     }
     h2 {
-      color: #333;
-      border-bottom: 2px solid #eee;
+      color: #2c3e50;
+      border-bottom: 2px solid #ccc;
       padding-bottom: 5px;
     }
     ul {
-      list-style-type: disc;
       margin-left: 20px;
     }
+    li {
+      margin-bottom: 10px;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
     .note {
-      background-color: #fff3cd;
-      border-left: 5px solid #ffeeba;
+      background-color: #f0f8ff;
       padding: 10px;
-      margin: 15px 0;
+      border: 1px solid #d0e7ff;
+      margin: 20px 0;
     }
     .critical {
       background-color: #f8d7da;
       border-left: 5px solid #f5c6cb;
       padding: 10px;
-      margin: 15px 0;
-    }
-    code {
-      background-color: #eee;
-      padding: 2px 4px;
-      border-radius: 4px;
-      font-family: monospace;
+      margin: 20px 0;
     }
   </style>
 </head>
 <body>
-  <h1>Update Notes - v1.1.1 Beta</h1>
+  <h1>Changelog - v1.1 / v1.1.1 Beta</h1>
 
-  <h2>New</h2>
+  <h2>v1.1 - Initial Release</h2>
+
+  <h3>New</h3>
   <ul>
     <li>Added <code>&lt;local&gt;</code> placeholder that returns the local player (the user who clicked the Truth or Dare button).</li>
-    <li>Added <code>&lt;range[1-2]&gt;</code> placeholder that generates a positive number within the given range (max: 500).</li>
+    <li>Added <code>&lt;range[1-2]&gt;</code> placeholder that generates any positive numbers within a set range (maximum: 500).</li>
   </ul>
 
-  <div class="critical">
-    <strong>CRITICAL BUG:</strong> If you click the button before it says "Ready!" you may need to create a new instance.
-    This will be fixed before the final release.
-  </div>
-
-  <p><strong>Note:</strong> It should show "Ready!" on screen when the game is initialized and playable.</p>
-
-  <h2>Changed</h2>
+  <h3>Changed</h3>
   <ul>
-    <li>Modified <code>&lt;player&gt;</code> functionality: now uses <code>&lt;player=X&gt;</code> (X = 1–5). Up to five players are supported.</li>
+    <li>Modified <code>&lt;player&gt;</code> functionality: now uses <code>&lt;player=X&gt;</code> where X = 1-5 (up to 5 players supported).</li>
     <ul>
       <li>Example: <code>&lt;local&gt;</code> do you have a crush on any of these players: <code>&lt;player=1&gt;</code>, <code>&lt;player=2&gt;</code>, <code>&lt;player=3&gt;</code></li>
     </ul>
-    <li>Increased download rate limit: 10 → 15 seconds.</li>
+    <li>Increased download rate limit from 10 seconds to 15 seconds for sets.</li>
   </ul>
 
-  <h2>Fixes</h2>
+  <h3>Fixes</h3>
   <ul>
     <li>Fixed a second <code>RequestSerialization</code> call that was unnecessary.</li>
-    <li>Fixed critical bug where clicking the Truth or Dare button before "Ready!" broke the game.</li>
-    <li>Resolved issue with <code>GetAllPlayers</code> not correctly populating the local player array.</li>
-    <li>Fixed placeholder handling: unused ones like <code>&lt;player=5&gt;</code> are now removed if not enough players.</li>
-    <li>Corrected range input to ensure it stays within 1–500.</li>
   </ul>
 
-  <h2>Removed</h2>
+  <h3>Removed</h3>
   <ul>
     <li>Removed Player Truths & Player Dares.</li>
-    <li>Removed <code>SetQuestion()</code> and <code>Chance()</code>.</li>
-    <li>Removed <code>usePlaceholders</code> setting — placeholders are now always enabled by default.</li>
+    <li>Removed <code>SetQuestion()</code> and <code>Chance()</code> functions.</li>
+    <li>Removed <code>usePlaceholders</code> — placeholders are now allowed by default.</li>
   </ul>
 
-  <h2>Additional Notes (v1.1.1 Beta)</h2>
+  <h2>v1.1.1 Beta - Patch Release</h2>
+
+  <h3>Fixes</h3>
   <ul>
-    <li>Includes all fixes from v1.1 release.</li>
-    <li>Fixed compatibility issue with Gumroad.</li>
+    <li>Fixed a critical bug where clicking the Truth or Dare button before the "Ready!" message would break the game.</li>
+    <li>Resolved an issue with <code>GetAllPlayers</code> not correctly populating the local player array.</li>
+    <li>Fixed player placeholder handling: unused placeholders (e.g., <code>&lt;player=5&gt;</code>) are now correctly removed if there aren’t enough players.</li>
+    <li>Corrected the input range limit to consistently stay within 1–500.</li>
   </ul>
+
+  <div class="critical">
+    <strong>Critical Bug in v1.1:</strong> If you clicked the button before the "Ready!" message appeared, the game could break. This is fixed in v1.1.1.
+  </div>
+
+  <div class="note">
+    <strong>Note:</strong> The v1.1.1 patch also includes fixes from the original v1.1 release and addresses the major bug where placeholders were not removed properly in certain scenarios.
+  </div>
+
 </body>
 </html>
